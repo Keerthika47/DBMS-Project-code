@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4fff4;
+            padding: 40px;
+        }
+        h2 {
+            text-align: center;
+            color: #2e8b57;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 14px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #2e8b57;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+        a.back-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #2e8b57;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+        }
+        a.back-btn:hover {
+            background: #246b46;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Details</h2>
+    <table>
+        <tr>
+            <th>OrderDetail ID</th>
+            <th>Order ID</th>
+            <th>Plant ID</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for detail in order_details %}
+        <tr>
+            <td>{{ detail.OrderDetailID }}</td>
+            <td>{{ detail.OrderID }}</td>
+            <td>{{ detail.PlantID }}</td>
+            <td>{{ detail.Quantity }}</td>
+            <td>{{ detail.Subtotal }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align: center;">
+        <a class="back-btn" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

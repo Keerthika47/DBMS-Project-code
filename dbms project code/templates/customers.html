@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fef9;
+            margin: 20px;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #2e8b57;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #c8e6c9;
+            color: #2e8b57;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f4f4;
+        }
+
+        tr:hover {
+            background-color: #e8f5e9;
+        }
+
+        .edit-link {
+            color: green;
+        }
+
+        .delete-link {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customers List</h1>
+    <a href="/add_customer">Add New Customer</a> |
+    <a href="/">Home</a>
+
+    <table>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Edit</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.CustomerID }}</td>
+            <td>{{ customer.Name }}</td>
+            <td>{{ customer.Email }}</td>
+            <td>{{ customer.Phone }}</td>
+            <td>{{ customer.Address }}</td>
+            <td><a class="edit-link" href="/update_customer/{{ customer.CustomerID }}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

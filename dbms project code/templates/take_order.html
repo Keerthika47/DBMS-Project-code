@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* General Reset */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f9f0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container */
+body {
+    padding: 30px;
+    max-width: 700px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2e7d32;
+}
+
+/* Form Labels */
+label, h3 {
+    font-weight: bold;
+    color: #388e3c;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Dropdown & Input Styles */
+select, input[type="number"] {
+    width: 60%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Checkbox and quantity inline */
+form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    background-color: #43a047;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+/* Link back to home */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+    <title>Take Order</title>
+</head>
+<body>
+    <h1>Take a New Order</h1>
+    <form method="post">
+        <label>Select Customer:</label><br>
+        <select name="customer_id" required>
+            {% for customer in customers %}
+            <option value="{{ customer.CustomerID }}">{{ customer.Name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <h3>Select Plants:</h3>
+        {% for plant in plants %}
+            <input type="checkbox" name="plant_id" value="{{ plant.PlantID }}">
+            {{ plant.Name }} (${{ plant.Price }}) 
+            Quantity: <input type="number" name="quantity" min="1" value="1"><br>
+        {% endfor %}
+        <br>
+        <button type="submit">Place Order</button>
+    </form>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

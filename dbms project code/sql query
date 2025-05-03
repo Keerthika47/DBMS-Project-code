@@ -1,0 +1,128 @@
+CREATE DATABASE plDB;
+USE plDB;
+
+
+CREATE TABLE Plants (
+    PlantID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Category VARCHAR(50),
+    Price DECIMAL(6,2) NOT NULL,
+    Stock INT NOT NULL
+);
+
+
+CREATE TABLE Customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(15),
+    Address TEXT
+);
+
+
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE DEFAULT (CURRENT_DATE),
+    TotalAmount DECIMAL(8,2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+CREATE TABLE Order_Details (
+    OrderDetailID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INT,
+    PlantID INT,
+    Quantity INT,
+    Subtotal DECIMAL(8,2),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (PlantID) REFERENCES Plants(PlantID)
+);
+
+
+CREATE TABLE Suppliers (
+    SupplierID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Address VARCHAR(100),
+    Phone VARCHAR(15),
+    Email VARCHAR(100) UNIQUE
+);
+
+
+
+INSERT INTO Plants (Name, Category, Price, Stock) VALUES
+('Aloe Vera', 'Succulent', 10.99, 50),
+('Rose', 'Flowering', 5.99, 30),
+('Tulip', 'Flowering', 7.49, 20),
+('Basil', 'Herb', 4.99, 40),
+('Lavender', 'Herb', 8.99, 35),
+('Cactus', 'Succulent', 12.49, 25),
+('Orchid', 'Flowering', 15.99, 15),
+('Snake Plant', 'Indoor', 9.99, 45),
+('Money Plant', 'Indoor', 6.99, 60),
+('Bamboo', 'Indoor', 14.99, 20),
+('Palm', 'Outdoor', 18.99, 10),
+('Fern', 'Indoor', 7.99, 35),
+('Jasmine', 'Flowering', 11.49, 25),
+('Chrysanthemum', 'Flowering', 9.49, 20),
+('Sunflower', 'Flowering', 6.99, 30),
+('Peperomia', 'Indoor', 8.49, 40),
+('Fiddle Leaf Fig', 'Indoor', 19.99, 12),
+('Bonsai', 'Indoor', 29.99, 5),
+('Mint', 'Herb', 3.99, 50),
+('Lemon Tree', 'Fruit', 24.99, 8);
+
+INSERT INTO Customers (Name, Email, Phone, Address) VALUES
+('Arjun', 'Arjun@123.com', '1234567890', 'Gandhipuram, Coimbatore, Tamil Nadu'),
+('Krishna', 'Krishna@123.com', '2345678901', 'Anna Nagar, Madurai, Tamil Nadu'),
+('Vijay', 'Vijay@123.com', '3456789012', 'T. Nagar, Chennai, Tamil Nadu'),
+('Surya', 'Surya@123.com', '4567890123', 'Srirangam, Trichy, Tamil Nadu'),
+('Priya', 'Priya@123.com', '5678901234', 'Fairlands, Salem, Tamil Nadu'),
+('Anitha', 'Anitha@123.com', '6789012345', 'Palayamkottai, Tirunelveli, Tamil Nadu'),
+('Murali', 'Murali@123.com', '7890123456', 'Perundurai, Erode, Tamil Nadu'),
+('Santhosh', 'Santhosh@123.com', '8901234567', 'Begambur, Dindigul, Tamil Nadu'),
+('Devi', 'Devi@123.com', '9012345678', 'Kumarakottam, Kanchipuram, Tamil Nadu'),
+('Gautham', 'Gautham@123.com', '0123456789', 'Katpadi, Vellore, Tamil Nadu'),
+('Akila', 'Akila@123.com', '1112223333', 'Vallam, Thanjavur, Tamil Nadu'),
+('Mohan', 'Mohan@123.com', '2223334444', 'Suchindram, Kanyakumari, Tamil Nadu'),
+('Saravanan', 'Saravanan@123.com', '3334445555', 'Aranthangi, Pudukkottai, Tamil Nadu'),
+('Lakshmi', 'Lakshmi@123.com', '4445556666', 'Rajapalayam, Virudhunagar, Tamil Nadu'),
+('Raja', 'Raja@123.com', '5556667777', 'Karaikudi, Sivagangai, Tamil Nadu'),
+('Poovizhi', 'Poovizhi@123.com', '6667778888', 'Velankanni, Nagapattinam, Tamil Nadu'),
+('Siva', 'Siva@123.com', '7778889999', 'Millerpuram, Thoothukudi, Tamil Nadu'),
+('Yamini', 'Yamini@123.com', '8889990000', 'Avinashi Road, Tiruppur, Tamil Nadu'),
+('Ramesh', 'Ramesh@123.com', '9990001111', 'Rasipuram, Namakkal, Tamil Nadu'),
+('Chandra', 'Chandra@123.com', '0001112222', 'Paramathi Velur, Karur, Tamil Nadu');
+
+
+INSERT INTO Orders (CustomerID, OrderDate, TotalAmount) VALUES
+(1, '2024-02-01', 30.50), (2, '2024-02-02', 45.75), (3, '2024-02-03', 25.00), (4, '2024-02-04', 60.99),
+(5, '2024-02-05', 15.75), (6, '2024-02-06', 42.30), (7, '2024-02-07', 53.50), (8, '2024-02-08', 18.25),
+(9, '2024-02-09', 65.75), (10, '2024-02-10', 29.99), (11, '2024-02-11', 47.50), (12, '2024-02-12', 34.75),
+(13, '2024-02-13', 22.80), (14, '2024-02-14', 55.99), (15, '2024-02-15', 12.99), (16, '2024-02-16', 41.50),
+(17, '2024-02-17', 38.75), (18, '2024-02-18', 50.25), (19, '2024-02-19', 27.49), (20, '2024-02-20', 44.90);
+
+INSERT INTO Order_Details (OrderID, PlantID, Quantity, Subtotal) VALUES
+(1, 1, 2, 21.98), (2, 3, 3, 22.47), (3, 5, 1, 8.99), (4, 7, 2, 31.98),
+(5, 9, 3, 20.97), (6, 11, 1, 18.99), (7, 13, 2, 22.98), (8, 15, 3, 20.97),
+(9, 17, 1, 19.99), (10, 19, 2, 7.98), (11, 2, 3, 17.97), (12, 4, 1, 4.99),
+(13, 6, 2, 24.98), (14, 8, 1, 9.99), (15, 10, 2, 29.98), (16, 12, 1, 7.99),
+(17, 14, 2, 18.98), (18, 16, 3, 25.47), (19, 18, 1, 29.99), (20, 20, 2, 49.98);
+
+INSERT INTO Suppliers (Name, Address, Phone, Email) VALUES
+('Green Earth Ltd.', '12 MG Road, Bengaluru, Karnataka', '9876543211', 'info@greenearth.com'),
+('Nature Bloom', '45 Park Street, Kolkata, West Bengal', '8765432110', 'support@naturebloom.com'),
+('EcoGrow Suppliers', '78 Nehru Place, New Delhi', '9654321109', 'sales@ecogrow.com'),
+('Verdant Ventures', '101 Boat Club Road, Chennai, Tamil Nadu', '6543211098', 'contact@verdantventures.com'),
+('Botanic Bliss', '56 FC Road, Pune, Maharashtra', '9432110987', 'service@botanicbliss.com'),
+('Plant Oasis', '89 Banjara Hills, Hyderabad, Telangana', '9321109876', 'sales@plantoasis.com'),
+('Evergreen Suppliers', '23 Residency Road, Ahmedabad, Gujarat', '9211098765', 'info@evergreensuppliers.com'),
+('Floral Wonders', '34 Rajpur Road, Dehradun, Uttarakhand', '9109876542', 'help@floralwonders.com'),
+('Leaf & Vine', '65 Civil Lines, Kanpur, Uttar Pradesh', '9098765431', 'sales@leafandvine.com'),
+('GrowWell Industries', '98 VIP Road, Raipur, Chhattisgarh', '9987654320', 'info@growwell.com');
+
+SELECT * FROM Plants;
+SELECT * FROM Customers;
+SELECT * FROM Orders;
+SELECT * FROM Order_Details;
+SELECT * FROM Suppliers;

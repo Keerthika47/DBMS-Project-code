@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0fdf4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Page Container */
+body {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 30px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #388e3c;
+    font-weight: bold;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+button {
+    background-color: #43a047;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+/* Back Link */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+    <title>Add Plant</title>
+</head>
+<body>
+    <h1>Add New Plant</h1>
+    <form method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Category:</label><br>
+        <input type="text" name="category"><br><br>
+
+        <label>Price:</label><br>
+        <input type="number" name="price" step="0.01" required><br><br>
+
+        <label>Stock:</label><br>
+        <input type="number" name="stock" required><br><br>
+
+        <button type="submit">Add Plant</button>
+    </form>
+    <br>
+    <a href="/">Back to Plants</a>
+</body>
+</html>

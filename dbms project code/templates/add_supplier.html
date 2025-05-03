@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f9f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        body {
+            padding: 30px;
+            max-width: 700px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #388e3c;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #43a047;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Add Supplier</title>
+</head>
+<body>
+    <h1>Add New Supplier</h1>
+    <form method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label>Address:</label>
+        <input type="text" name="address"><br> <!-- Fixed 'Address' to 'address' -->
+
+        <label>Phone:</label>
+        <input type="text" name="phone"><br>
+
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+
+        <button type="submit">Add Supplier</button>
+    </form>
+    <br>
+    <a href="/suppliers">Back to Suppliers</a>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* General Reset */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f9f0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container */
+body {
+    padding: 30px;
+    max-width: 700px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2e7d32;
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    color: #388e3c;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input Fields */
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    background-color: #43a047;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+/* Link back to customers */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+    <title>Add Customer</title>
+</head>
+<body>
+    <h1>Add New Customer</h1>
+    <form method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone"><br><br>
+
+        <label>Address:</label><br>
+        <textarea name="address"></textarea><br><br>
+
+        <button type="submit">Add Customer</button>
+    </form>
+    <br>
+    <a href="/customers">Back to Customers</a>
+</body>
+</html>

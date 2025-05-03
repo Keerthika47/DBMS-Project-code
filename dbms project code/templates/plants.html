@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f5;
+            margin: 20px;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2b7a3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #2b7a3c;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #c4e3cb;
+            color: #2b7a3c;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e6ffe6;
+        }
+
+        td a {
+            color: red;
+        }
+
+    </style>
+    <title>Green Nursery - Plants</title>
+</head>
+<body>
+    <h1>Green Nursery - Plants List</h1>
+    <a href="/add_plant">Add New Plant</a> | 
+    <a href="/customers">Customers</a> | 
+    <a href="/suppliers">Suppliers</a> | 
+    <a href="/take_order">Take Order</a>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Plant ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for plant in plants %}
+        <tr>
+            <td>{{ plant.PlantID }}</td>
+            <td>{{ plant.Name }}</td>
+            <td>{{ plant.Category }}</td>
+            <td>{{ plant.Price }}</td>
+            <td>{{ plant.Stock }}</td>
+            <td><a href="/update_plant/{{ plant.PlantID }}">Edit</a></td>
+            <td><a href="/delete_plant/{{ plant.PlantID }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
